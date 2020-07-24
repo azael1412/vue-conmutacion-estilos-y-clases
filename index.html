@@ -1,0 +1,34 @@
+<div id="app">
+   <p>Ingrese su nombre:<input type="text" v-model="nombre"></p>
+    <p>Ingrese su apellido:<input type="text" v-model="apellido"></p>
+    <p>Nombre completo: {{nombreCompleto}}</p>
+    <h2>estilos con vue</h2>
+
+    <p>Tamaño de la fuente:
+      <input type="range" v-model="tamanoFuente" min=10 max=100>{{tamanoFuente}}
+    </p>
+    <p>Color:
+        <input type="color" v-model="colorParrafo">
+    </p>      
+    <p v-bind:style="{'font-size':tamanoFuente+'px', 'color': colorParrafo}">Párrafo de prueba</p>
+    <h2>manejo de clases</h2>
+    <table border="1">
+      <tr><td>Código</td><td>Descripción</td><td>Precio</td><td>Stock</td></tr>
+      <template v-for="articulo in articulos">
+        <tr v-bind:class="{faltastock: articulo.stock===0}">
+          <td>{{articulo.codigo}}</td>
+          <td>{{articulo.descripcion}}</td>
+          <td>{{articulo.precio}}</td>
+          <td>{{articulo.stock}}</td>          
+        </tr>
+      </template>
+    </table>
+
+</div>
+<style>
+    .faltastock {
+      background-color: yellow;
+      color: blue;
+      font-style: italic;            
+    }
+  </style>
